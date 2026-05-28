@@ -1,0 +1,30 @@
+<div th:fragment ="header" class=" d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+    <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/"><img href="/" src="../static/images/logo.svg" alt="PerfectFit" class="logo"></a>
+    </div>
+
+
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/subscriptions" class="nav-link px-2 link-secondary custom-link-text">Subscriptions</a></li>
+        <a class="nav-link px-2 link-secondary custom-link-text">|</a>
+        <li><a href="/courses?index=0" class="nav-link px-2 link-secondary custom-link-text">Courses</a></li>
+    </ul>
+
+
+    <div class="col-md-3 text-end">
+        <div sec:authorize="isAnonymous()">
+            <a href="/login"><img  src="../static/images/icon_login.svg"></a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <div sec:authorize="hasRole('ROLE_CLIENT')">
+            <a href="/client?dateIndex=0"><img  src="../static/images/icon_my_page.svg"></a>
+            <a href="/logout"><img  src="../static/images/icon_logout.svg"></a>
+            </div>
+            <div sec:authorize="hasRole('ROLE_COACH')">
+                <a href="/coach?dateIndex=0"><img  src="../static/images/icon_my_page.svg"></a>
+                <a href="/logout"><img  src="../static/images/icon_logout.svg"></a>
+            </div>
+        </div>
+    </div>
+</div>

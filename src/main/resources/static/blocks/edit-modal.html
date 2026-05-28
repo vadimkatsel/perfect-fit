@@ -1,0 +1,95 @@
+<div th:fragment ="edit-modal">
+  <div sec:authorize="hasRole('ROLE_CLIENT')">
+  <div class="modal fade" id="ClientEditModal">
+    <div class="modal-dialog modal-lg" style="display: flex;align-items: center;justify-content: center; height: 100vh;" role="document">
+      <div class="modal-content" style="width: 65%; background-color: rgb(12,19,26)!important; ">
+        <div class="modal-header" style="text-align: center!important; border: none; display: flex; align-items: center;">
+          <div class="col-md-11">
+            <h5 class="modal-title" style="color: #f8f301; font-size: 200%">Edit</h5>
+          </div>
+          <div class="col-md-1 text-right" style="display: flex; justify-content: right;">
+            <button type="button" class="close" data-dismiss="modal" style="background: none; border: none" aria-label="Close">
+              <img src="../static/images/close-bold.svg">
+            </button>
+          </div>
+        </div>
+        <form th:action="@{'/client/update'}" th:object="${client}" method="post">
+          <div class = "row">
+            <div class="modal-body" style="text-align: center;">
+              <div class="form-group">
+                <label for="fio" style="color: floralwhite !important;">Name Surname:</label> </br>
+                <input  id ="fio" type="text" class="form-control"  th:field="*{fio}" th:value="${client.getFio()}" required>
+              </div>
+              <div class="form-group">
+                <label for="mail" style="color: floralwhite !important;">Email:</label> </br>
+                <input id ="mail" type="email" class="form-control" th:field="*{mail}" th:value="${client.getMail()}" required>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber" style="color: floralwhite !important;">Phone number:</label> </br>
+                <input id="phoneNumber" type="text" pattern="\+\d{1,3}\d{9}|0\d{9}" class="form-control" th:field="*{phoneNumber}" th:value="${client.getPhoneNumber()}" required>
+              </div>
+
+              <input type="hidden" th:field="*{password}" th:value="${client.getPassword()}"/>
+              <input type="hidden" th:field="*{id}" th:value="${client.getId()}"/>
+              <input type="hidden" th:field="*{subscription}" th:value="${client.getSubscription()}"/>
+            </div>
+
+            <div class = "row">
+              <div class="modal-footer"  style="border: none; display: flex; justify-content: center;">
+                <button type="submit" class="btn btn-success">Update</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div sec:authorize="hasRole('ROLE_COACH')">
+    <div class="modal fade" id="EditModal">
+      <div class="modal-dialog modal-lg" style="display: flex;align-items: center;justify-content: center; height: 100vh;" role="document">
+        <div class="modal-content" style="width: 65%; background-color: rgb(12,19,26)!important; ">
+          <div class="modal-header" style="text-align: center!important; border: none; display: flex; align-items: center;">
+            <div class="col-md-11">
+              <h5 class="modal-title" style="color: #f8f301; font-size: 200%">Edit</h5>
+            </div>
+            <div class="col-md-1 text-right" style="display: flex; justify-content: right;">
+              <button type="button" class="close" data-dismiss="modal" style="background: none; border: none" aria-label="Close">
+                <img src="../static/images/close-bold.svg">
+              </button>
+            </div>
+          </div>
+          <form th:action="@{'/coach/update'}" th:object="${coach}" method="post">
+            <div class = "row">
+              <div class="modal-body" style="text-align: center;">
+                <div class="form-group">
+                  <label for="fio" style="color: floralwhite !important;">Name Surname:</label> </br>
+                  <input  id ="fio" type="text" class="form-control"  th:field="*{fio}" th:value="${coach.getFio()}" required>
+                </div>
+                <div class="form-group">
+                  <label for="mail" style="color: floralwhite !important;">Email:</label> </br>
+                  <input id ="mail" type="email" class="form-control" th:field="*{mail}" th:value="${coach.getMail()}" required>
+                </div>
+                <div class="form-group">
+                  <label for="phoneNumber" style="color: floralwhite !important;">Phone number:</label> </br>
+                  <input id="phoneNumber" type="text" pattern="\+\d{1,3}\d{9}|0\d{9}" class="form-control" th:field="*{phoneNumber}" th:value="${coach.getPhoneNumber()}" required>
+                </div>
+
+                <input type="hidden" th:field="*{password}" th:value="${coach.getPassword()}"/>
+                <input type="hidden" th:field="*{id}" th:value="${coach.getId()}"/>
+              </div>
+
+              <div class = "row">
+                <div class="modal-footer"  style="border: none; display: flex; justify-content: center;">
+                  <button type="submit" class="btn btn-success">Update</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+  <link rel="stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href= "../static/styles/login-page.css">
+  <link rel="stylesheet" href= "../static/styles/header.css">
+</head>
+<body>
+<div class="container-expands" th:insert = "../static/blocks/header :: header"> </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h1> Registration </h1>
+
+    <div id="errorSlider" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div class="carousel-inner">
+        <div th:if="${mailError}" class="carousel-item active">
+          <div class="alert alert-danger" role="alert">
+            <p th:text="${mailError}"></p>
+          </div>
+        </div>
+        <div th:if="${fioError}" class="carousel-item">
+          <div class="alert alert-danger" role="alert">
+            <p th:text="${fioError}"></p>
+          </div>
+        </div>
+        <div th:if="${phoneNumberError}" class="carousel-item">
+          <div class="alert alert-danger" role="alert">
+            <p th:text="${phoneNumberError}"></p>
+          </div>
+        </div>
+        <div th:if="${passwordError}" class="carousel-item">
+          <div class="alert alert-danger" role="alert">
+            <p th:text="${passwordError}"></p>
+          </div>
+        </div>
+      </div>
+      <!-- Навигационные элементы слайдера -->
+      <a class="carousel-control-prev" href="#errorSlider" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+      </a>
+      <a class="carousel-control-next" href="#errorSlider" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+      </a>
+    </div>
+
+
+    <!-- Login Form -->
+    <form method='POST'>
+      <input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden">
+      <input type="text" id="fio" class="fadeIn second" name="fio" placeholder="Name Surname">
+      <input type="email" id="email" class="fadeIn third" name="mail" placeholder="email">
+      <input type="text" id="phone" class="fadeIn second" name="phoneNumber" placeholder="phone number" pattern="\+\d{1,3}\d{9}|0\d{9}" >
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" minlength="6" maxlength="12">
+      <input type="submit" class="fadeIn fourth" value="Register">
+    </form>
+
+  </div>
+  <!-- Подключение скриптов Bootstrap и jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

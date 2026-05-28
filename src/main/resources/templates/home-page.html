@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <title>Login</title>
+  <link rel="stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href= "../static/styles/home-page.css">
+  <link rel="stylesheet" href= "../static/styles/header.css">
+</head>
+<body>
+<header class="container-expands" th:insert = "../static/blocks/header :: header"> </header>
+
+
+<h1 class="display-1 custom-display-1">Your way <br> to perfection <br> starts  now </h1>
+
+<div class="d-grid gap-2 d-md-block custom-button-block">
+  <div sec:authorize="isAnonymous()">
+    <a href="/registration"><button class="btn btn-light btn-lg me-3" type="button" >Start the journey</button></a>
+    <a href="/login"><button class="btn btn-secondary btn-lg" type="button">I have an account</button></a>
+  </div>
+  <div sec:authorize="isAuthenticated()">
+    <button class="btn btn-light btn-lg me-3"data-toggle="modal" data-target="#loginModal" type="button">Start the journey</button>
+    <button class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#loginModal" type="button">I have an account</button>
+  </div>
+</div>
+
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resultModalLabel">You are already logged in!</h5>
+        <button type="button" class="close" data-dismiss="modal" style="border: none; background: none">
+          <img src="../static/images/close-bold-dark.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>It seems you are already logged in. Proceed to the home page.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Подключение скриптов Bootstrap и jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

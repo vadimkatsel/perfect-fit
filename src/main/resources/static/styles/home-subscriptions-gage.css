@@ -1,0 +1,52 @@
+:root {
+    --color-pink: #E733B8;
+    --color-green: #43B438;
+    --color-yellow: #FBF601;
+    --main-font: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url(../images/bg_blured.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 3vw;
+    margin-left: 10vw;
+}
+
+
+.flex-container {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flex;
+}
+
+.subscription {
+    margin: 40px;
+    padding: 30px;
+    width: 300px;
+    height: 406px;
+    background: #FFFFFF;
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    box-shadow: 10px 5px #85CB35;
+
+}
+.subscription:hover {
+    filter: drop-shadow(0 0 20px rgba(231, 51, 184, 1))
+}
+
+
+.green {
+    /*box-shadow: 20px  #85CB35;*/
+    /*background: #85CB35;
+    filter: blur(15px);
+    border-radius: 24px;*/
+}
+

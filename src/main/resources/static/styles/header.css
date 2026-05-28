@@ -1,0 +1,14 @@
+
+.container-expands {
+    background-color: rgba(217, 217, 217, 0.2);
+    padding: 0 10%;
+    margin-top: 20px;
+}
+
+.nav .custom-link-text {
+    color: floralwhite !important;
+    font-size: 140%
+}
+.nav .custom-link-text:hover {
+    color: #E733B8 !important;
+}

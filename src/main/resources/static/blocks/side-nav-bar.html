@@ -1,0 +1,51 @@
+<div th:fragment ="side-bar">
+  <div sec:authorize="hasRole('ROLE_CLIENT')">
+    <div class="row">
+      <div class="col-sm-12" style="margin-top: 10%; margin-bottom: 5%">
+        <h1 style=" font-weight: bold; margin-bottom: 5%;color: #FBF601 !important;">Account</h1>
+        <h2 style="color: floralwhite !important;font-size: 140% !important;" th:text = "${client.getFio()}"></h2>
+        <h2 style="color: floralwhite !important;font-size: 100% !important;" th:text = "${client.getMail()}"></h2>
+        <h2 style="color: floralwhite !important;font-size: 100% !important;" th:text = "${client.getPhoneNumber()}"></h2>
+        <a href="#" class="nav-link link-light" style="color: #ff24b3 !important;" data-toggle="modal" data-target="#ClientEditModal">edit</a>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5%; margin-bottom: 20%">
+      <div class="col-sm-12">
+        <h1 style=" font-weight: bold; margin-bottom: 5%; color: #3fb235 !important;">Menu</h1>
+        <a href="/client?dateIndex=0" class="nav-link link-light custom-link-left">Schedule</a>
+        <a href="/client/my-courses?index=0" class="nav-link link-light custom-link-left">My courses</a>
+        <a href="/client/my-subscription" class="nav-link link-light custom-link-left">My subscription</a>
+
+        <a href="#" class="nav-link link-light custom-link-left" style="margin-top: 5%" data-toggle="modal" data-target="#absenceModal" >Report absence</a>
+        <a href="/client/change-password" class="nav-link link-light custom-link-left" >Change password</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div sec:authorize="hasRole('ROLE_COACH')">
+    <div class="row">
+      <div class="col-sm-12" style="margin-top: 10%; margin-bottom: 5%">
+        <h1 style=" font-weight: bold; margin-bottom: 5%;color: #FBF601 !important;">Account</h1>
+        <h2 style="color: floralwhite !important;font-size: 140% !important;" th:text = "${coach.getFio()}"></h2>
+        <h2 style="color: floralwhite !important;font-size: 100% !important;" th:text = "${coach.getMail()}"></h2>
+        <h2 style="color: floralwhite !important;font-size: 100% !important;" th:text = "${coach.getPhoneNumber()}"></h2>
+        <a class="nav-link link-light" style="color: #ff24b3 !important;" data-toggle="modal" data-target="#EditModal">edit</a>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5%; margin-bottom: 20%">
+      <div class="col-sm-12">
+        <h1 style=" font-weight: bold; margin-bottom: 5%; color: #3fb235 !important;">Menu</h1>
+        <a href="/coach?dateIndex=0" class="nav-link link-light custom-link-left">Schedule</a>
+        <a href="#" class="nav-link link-light custom-link-left" style="margin-top: 5%" data-toggle="modal" data-target="#absenceModalCoach" >Report absence</a>
+        <a href="/coach/change-password" class="nav-link link-light custom-link-left" >Change password</a>
+      </div>
+    </div>
+
+
+  </div>
+  <div th:insert = "../static/blocks/edit-modal :: edit-modal"> </div>
+  <div th:insert = "../static/blocks/absence-modal :: absence-modal"> </div>
+  <div th:insert = "../static/blocks/password-modal:: password-modal"> </div>
+
+</div>
